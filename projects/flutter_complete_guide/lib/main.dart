@@ -18,33 +18,38 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final questions = const [
+    {
+      "questionText": "What\'s your favorite color?",
+      "answer": ["Black", "Red", "Green", "White"],
+    },
+    {
+      "questionText": "What\'s your favorite animal?",
+      "answer": ["Rabbit", "Snake", "Elephant", "Lion"],
+    },
+    {
+      "questionText": "Who\'s your favorite instructor?",
+      "answer": ["Max", "Max", "Max"],
+    },
+  ];
   var _questionIndex = 0;
 
   void _answerQuestion() {
+    // setState
     // 해당 함수가 들어있는 위젯만 다시 빌드함
     // 그래서 변경사항이 수정됨
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
+
+    if (_questionIndex < questions.length) {
+      print("We have more questions!");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    const questions = [
-      {
-        "questionText": "What\'s your favorite color?",
-        "answer": ["Black", "Red", "Green", "White"],
-      },
-      {
-        "questionText": "What\'s your favorite animal?",
-        "answer": ["Rabbit", "Snake", "Elephant", "Lion"],
-      },
-      {
-        "questionText": "Who\'s your favorite instructor?",
-        "answer": ["Max", "Max", "Max"],
-      },
-    ];
     // questions = []; // const 변수에 작동하지않는 코드
     return MaterialApp(
       home: Scaffold(
