@@ -41,8 +41,8 @@ class _MyAppState extends State<MyApp> {
         "answer": ["Rabbit", "Snake", "Elephant", "Lion"],
       },
       {
-        "questionText": "Who\'s your favorite teacher?",
-        "answer": ["Max", "Max", "Max", "Max"],
+        "questionText": "Who\'s your favorite instructor?",
+        "answer": ["Max", "Max", "Max"],
       },
     ];
     return MaterialApp(
@@ -53,11 +53,12 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(
-              questions[_questionIndex],
+              questions[_questionIndex]["questionText"],
             ),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
+            ...(questions[_questionIndex]["answer"] as List<String>)
+                .map((answer) {
+              return Answer(_answerQuestion, answer);
+            }).toList(),
           ],
         ),
       ),
