@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    const questions = [
       {
         "questionText": "What\'s your favorite color?",
         "answer": ["Black", "Red", "Green", "White"],
@@ -45,6 +45,7 @@ class _MyAppState extends State<MyApp> {
         "answer": ["Max", "Max", "Max"],
       },
     ];
+    // questions = []; // const 변수에 작동하지않는 코드
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
