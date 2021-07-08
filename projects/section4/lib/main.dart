@@ -36,7 +36,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center, // 주축 정렬
+        mainAxisAlignment: MainAxisAlignment.spaceAround, // 주축 정렬
         crossAxisAlignment: CrossAxisAlignment.stretch, // 서브축 정렬
         children: <Widget>[
           Card(
@@ -47,9 +47,12 @@ class MyHomePage extends StatelessWidget {
             ),
             elevation: 5,
           ),
-          Card(
-            color: Colors.red,
-            child: Text("LIST OF TX"),
+          Column(
+            children: transactions.map((tx) {
+              return Card(
+                child: Text(tx.title),
+              );
+            }).toList(),
           ),
         ],
       ),
