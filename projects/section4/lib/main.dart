@@ -20,17 +20,19 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center, // 주축 정렬
+        crossAxisAlignment: CrossAxisAlignment.stretch, // 서브축 정렬
         children: <Widget>[
           Card(
             color: Colors.blue,
             child: Container(
-              width: 100,
-              alignment: Alignment.center,
+              width: double.infinity,
               child: Text("CHART!"),
             ),
             elevation: 5,
           ),
           Card(
+            color: Colors.red,
             child: Text("LIST OF TX"),
           ),
         ],
