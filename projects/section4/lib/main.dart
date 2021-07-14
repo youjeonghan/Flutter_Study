@@ -24,7 +24,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final titleController = TextEditingController();
-
   final amountController = TextEditingController();
 
   final List<Transaction> _userTransactions = [
@@ -62,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return GestureDetector(
           onTap: () {},
           child: NewTransaction(_addNewtransaction),
+          behavior: HitTestBehavior.opaque,
         );
       },
     );
