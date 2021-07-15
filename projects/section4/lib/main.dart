@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:section4/widgets/chart.dart';
 import 'models/transaction.dart';
 import 'package:intl/intl.dart';
 
@@ -13,26 +14,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expense',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-        accentColor: Colors.amber,
-        fontFamily: "Quicksand",
-        textTheme: ThemeData.light().textTheme.copyWith(
-          title: TextStyle(
-              fontFamily: "Opensans",
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            )
-        ),
-        appBarTheme: AppBarTheme(
+          primarySwatch: Colors.green,
+          accentColor: Colors.amber,
+          fontFamily: "Quicksand",
           textTheme: ThemeData.light().textTheme.copyWith(
-            title: TextStyle(
-              fontFamily: "Opensans",
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            )
-          )
-        )
-      ),
+                  title: TextStyle(
+                fontFamily: "Opensans",
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              )),
+          appBarTheme: AppBarTheme(
+              textTheme: ThemeData.light().textTheme.copyWith(
+                      title: TextStyle(
+                    fontFamily: "Opensans",
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  )))),
       home: MyHomePage(),
     );
   }
@@ -62,6 +59,14 @@ class _MyHomePageState extends State<MyHomePage> {
     // ),
   ];
 
+  List<Transaction> get _recentTransactions {
+    return _userTransactions.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(Duration(days: 7)),
+      );
+    }).toList();
+  }
+
   void _addNewtransaction(String txTitle, double txAmount) {
     final newTx = Transaction(
       title: txTitle,
@@ -90,9 +95,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print(_recentTransactions);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Personal Expense', style: TextStyle(fontFamily: "OpenSans"),),
+        title: Text(
+          'Personal Expense',
+          style: TextStyle(fontFamily: "OpenSans"),
+        ),
         actions: <Widget>[
           IconButton(
             onPressed: () => _startAddNewTransaction(context),
@@ -105,14 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // mainAxisAlignment: MainAxisAlignment.start, // 주축 정렬
           crossAxisAlignment: CrossAxisAlignment.stretch, // 서브축 정렬
           children: <Widget>[
-            Card(
-              color: Colors.blue,
-              child: Container(
-                width: double.infinity,
-                child: Text("CHART!"),
-              ),
-              elevation: 5,
-            ),
+            Chart(_recentTransactions),
             TransactionList(_userTransactions),
           ],
         ),
