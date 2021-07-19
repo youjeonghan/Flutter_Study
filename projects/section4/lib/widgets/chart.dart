@@ -43,7 +43,13 @@ class Chart extends StatelessWidget {
       margin: EdgeInsets.all(20),
       child: Row(
         children: groupedTransactionValues.map((data) {
-          return ChartBar(data["day"], data["amount"], (data["amount"] as double) / totalSpending ,);
+          return ChartBar(
+            data["day"],
+            data["amount"],
+            totalSpending == 0.0
+                ? 0.0
+                : (data["amount"] as double) / totalSpending,
+          );
         }).toList(),
       ),
     );
