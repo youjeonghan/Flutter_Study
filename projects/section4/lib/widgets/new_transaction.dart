@@ -29,16 +29,6 @@ class _NewTransactionState extends State<NewTransaction> {
     Navigator.of(context).pop();
   }
 
-  void submitData() {
-    final enteredTitle = titleController.text;
-    final enteredAmount = double.parse(amountController.text);
-
-    if (enteredTitle.isEmpty || enteredAmount <= 0) {
-      return;
-    }
-    addTx(enteredTitle, enteredAmount);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
