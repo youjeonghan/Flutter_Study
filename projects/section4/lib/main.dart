@@ -14,25 +14,28 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expense',
       theme: ThemeData(
-          primarySwatch: Colors.green,
-          accentColor: Colors.amber,
-          fontFamily: "Quicksand",
-          errorColor: Colors.red,
+        primarySwatch: Colors.green,
+        accentColor: Colors.amber,
+        fontFamily: "Quicksand",
+        errorColor: Colors.red,
+        textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                fontFamily: "Opensans",
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+              button: TextStyle(color: Colors.white),
+            ),
+        appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(
                 title: TextStyle(
                   fontFamily: "Opensans",
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
-                button: TextStyle(color: Colors.white),
               ),
-          appBarTheme: AppBarTheme(
-              textTheme: ThemeData.light().textTheme.copyWith(
-                      title: TextStyle(
-                    fontFamily: "Opensans",
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  )))),
+        ),
+      ),
       home: MyHomePage(),
     );
   }
@@ -129,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () => _startAddNewTransaction(context),

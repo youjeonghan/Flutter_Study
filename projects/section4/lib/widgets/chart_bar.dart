@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ChartBar extends StatelessWidget {
@@ -22,6 +24,7 @@ class ChartBar extends StatelessWidget {
           height: 60,
           width: 10,
           child: Stack(
+            alignment: AlignmentDirectional.bottomEnd,
             children: [
               Container(
                 decoration: BoxDecoration(
@@ -39,6 +42,24 @@ class ChartBar extends StatelessWidget {
                   ),
                 ),
               ),
+              // Column(
+              //   verticalDirection: VerticalDirection.up,
+              //   children: <Widget>[
+              //     Container(
+              //       height: 60,
+              //       alignment: AlignmentDirectional.bottomEnd,
+              //       child: FractionallySizedBox(
+              //         heightFactor: spendingPctOfTotal,
+              //         child: Container(
+              //           decoration: BoxDecoration(
+              //             color: Theme.of(context).primaryColor,
+              //             borderRadius: BorderRadius.circular(10),
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),
