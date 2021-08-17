@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:section4/widgets/chart.dart';
 import 'models/transaction.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/services.dart';
 
 import 'package:section4/widgets/transaction_list.dart';
 import 'package:section4/widgets/new_transaction.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  // 세로모드 고정
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitDown,
+  //   DeviceOrientation.portraitUp,
+  // ]);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
